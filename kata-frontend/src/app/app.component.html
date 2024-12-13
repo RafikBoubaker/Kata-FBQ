@@ -1,0 +1,97 @@
+<div class="container mt-5">
+
+  <h1 class="text-center">Kata</h1>
+    <h3 class="mt-4">Énoncé du Kata</h3>
+    <p>
+      Écrire un algorithme qui transforme un nombre (compris entre 0 et 100) en une chaîne de caractères.
+      Cet algorithme doit suivre les règles suivantes :
+    </p>
+    <ul>
+      <li>Si le nombre est divisible par 3 ou contient 3, la chaîne doit contenir "FOO".</li>
+      <li>Si le nombre est divisible par 5 ou contient 5, la chaîne doit contenir "BAR".</li>
+      <li>Si le nombre contient 7, la chaîne doit contenir "QUIX".</li>
+      <li>La règle "divisible par" est prioritaire sur "contient".</li>
+      <li>Le contenu est analysé de gauche à droite.</li>
+      <li>Si aucune règle n'est vérifiée, retourner le nombre en entrée sous forme de chaîne.</li>
+    </ul>
+    <h4 class="mt-4">Exemples</h4>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>"1"</td></tr>
+        <tr><td>3</td><td>"FOOFOO"</td></tr>
+        <tr><td>5</td><td>"BARBAR"</td></tr>
+        <tr><td>7</td><td>"QUIX"</td></tr>
+        <tr><td>9</td><td>"FOO"</td></tr>
+        <tr><td>51</td><td>"FOOBAR"</td></tr>
+        <tr><td>53</td><td>"BARFOO"</td></tr>
+        <tr><td>33</td><td>"FOOFOOFOO"</td></tr>
+        <tr><td>15</td><td>"FOOBARBAR"</td></tr>
+      </tbody>
+    </table>
+
+    
+    <div class="text-center mt-5">
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#testModal">
+        Tester l'algorithme
+      </button>
+    </div>
+
+    <div
+      class="modal fade"
+      id="testModal"
+      tabindex="-1"
+      aria-labelledby="testModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="testModalLabel">Tester l'algorithme</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="numberInput">Entrez un nombre (0-100) :</label>
+              <input
+                id="numberInput"
+                type="number"
+                class="form-control"
+                [(ngModel)]="inputNumber"
+                (keydown.enter)="transformNumber()"
+              />
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+              {{ errorMessage }}
+            </div>
+            <div *ngIf="result" class="alert alert-success mt-3">
+              {{ result }}
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              (click)="resetInput()"
+            >
+              Fermer
+            </button>
+            <button class="btn btn-primary" (click)="transformNumber()">
+              Tester
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
